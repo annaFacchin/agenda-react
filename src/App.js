@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import CalendarMain from "./components/CalendarMain.1";
+import TodoMain from './components/TodoMain';
 import './App.css';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <nav>
+        <span>Navbar</span>
+        <button type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+        </button>
+        <div id="navbarNavAltMarkup">
+          <div>
+            <Link to="/todo">Todo</Link>
+            <Link to="/calendar">Calendar</Link>
+          </div>
+        </div>
+      </nav>
+
+      <Switch>
+        <Route path="/todo">
+          <TodoMain />
+        </Route>
+        <Route path="/calendar">
+          <CalendarMain />
+        </Route>
+      </Switch>
+
+    </Router >
+
   );
+
 }
 
 export default App;
